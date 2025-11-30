@@ -23,7 +23,6 @@ class Value:
 
     def __mul__(self, other):
         other = other if isinstance(other, Value) else Value(other)
-
         out = Value(self.data * other.data, _children=(self, other), _op='*')
 
         def _grad():
@@ -39,7 +38,6 @@ class Value:
 
     def __pow__(self, other):
         other = other if isinstance(other, Value) else Value(other)
-
         out = Value(self.data ** other.data, _children=(self, other), _op=f'**{other}')
         
         def _grad():
